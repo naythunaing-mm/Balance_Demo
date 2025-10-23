@@ -30,7 +30,7 @@ public class BalanceController {
 		return "balance-edit";
 	}
 	
-	@PostMapping("delete/{id:\\d+}")
+	@GetMapping("delete/{id:\\d+}")
 	public String delete(@PathVariable int id) {
 		return "redirect:/";
 	}
