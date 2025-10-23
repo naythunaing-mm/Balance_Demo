@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Modal Fragments</title>
+</head>
+<body>
+
+<!-- 🔹 Bootstrap Modal -->
+<div class="modal fade" 
+     id="changedPassword" 
+     data-bs-backdrop="static" 
+     data-bs-keyboard="false" 
+     tabindex="-1" 
+     th:fragment="changePassword"  
+     aria-hidden="true">
+
+  <div class="modal-dialog">
+    <form th:action="@{/user/change-password}" method="post" class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="fw-bolder mb-0">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="oldPassword" class="form-label">Old Password</label>
+          <input type="password" id="oldPassword" name="oldPassword" class="form-control" placeholder="Old password" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="newPassword" class="form-label">New Password</label>
+          <input type="password" id="newPassword" name="newPassword" class="form-control" placeholder="New password" required>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-dark">Save</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+</body>
+</html>

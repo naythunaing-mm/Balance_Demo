@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layouts/authenicated.html}"
+    >
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Income</title>
+</head>
+<body>
+	<div layout:fragment="content">
+<!-- 		search box  -->
+
+		<div class="card">
+			<div class="card-header fw-bolder" th:text="${title}">Balance</div>
+			<div class="card-body">
+				<form action="" class="row">
+					<div class="col-auto">
+						<input type="date" name="dateFrom" class="form-control" />
+					</div>
+					<div class="col-auto">
+						<input type="date" name="dateTo" class="form-control" />
+					</div>
+					
+					<div class="col-3">
+						<input type="text" class="form-control" placeholder="category" />
+					</div>
+					<div class="col">
+						<button class="btn btn-dark">Search</button>
+						<a th:href="@{'/user/balance/add/'+${type}}" class="btn btn-outline-primary">Add New</a>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+		<!-- result table  -->
+
+		<section class="mt-4">
+			<div class="card">
+				<div class="card-header fw-bolder">Balance Detail</div>
+				<div class="card-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Category</th>
+								<th>Remark</th>
+								<th class="text-end">Amount</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2025/10/10</td>
+								<td>Student Fees</td>
+								<td>Java Basic Course</td>
+								<td class="text-end"><a th:href="@{/user/balance/1}" class="text-decoration-none">$200</a></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+	</div>
+</body>
+</html>
