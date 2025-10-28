@@ -17,9 +17,8 @@ public class HomeController {
 		return "balance-list";
 	}
 
-//	@GetMapping("/expenses")
-//	public String expenses(ModelMap model) {
-//		model.put("title", "Expense Management");
-//		return "balance-list";
-//	}
+	@GetMapping()
+	String index() {
+		return "index";
+	}
 }

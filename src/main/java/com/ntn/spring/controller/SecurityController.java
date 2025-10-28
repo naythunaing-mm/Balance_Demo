@@ -1,30 +1,27 @@
 package com.ntn.spring.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.ntn.spring.modal.domain.entity.User.Role;
+
 @Controller
 public class SecurityController {
 
-	@GetMapping("/singout")
-	public String signOut() {
-		return "redirect:/signin";
+	@GetMapping("/")
+	public String index() {
+		var auth = SecurityContextHolder.getContext().getAuthentication();
+		if (null != auth && auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals(Role.ADMIN.name()) 
+				|| a.getAuthority().equals(Role.ADMIN.name()))) {
+			return "redirect:/user/index";
+		}
+		return "signin";
 	}
-	
-	@GetMapping("/signin")
-	public void loadSignIn() {
-
-	}
-
 	@GetMapping("/signup")
 	public void loadSignUp() {
 
-	}
-	
-	@PostMapping("/signin")
-	public String signIn() {
-		return "redirect:/";
 	}
 
 	@PostMapping("/signup")

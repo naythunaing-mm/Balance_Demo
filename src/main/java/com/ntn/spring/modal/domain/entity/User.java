@@ -27,11 +27,12 @@ public class User implements Serializable {
 	@Column(nullable=false)
 	private String phone;
 	@Column(nullable=false, unique=true)
-	private String LoginID;
+	private String loginId;
 
+	private boolean isActive = true;
 	private Role role;
 
 	public enum Role {
-		ADMIN, USER
+		ADMIN,MEMBER
 	}
 }
