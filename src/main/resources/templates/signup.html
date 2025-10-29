@@ -15,7 +15,7 @@
 			<div class="col-4 text-center">
                   <h2 class="fw-bolder fw-bolder my-5">Balance Management</h2>
                   <div class="card">
-                  	<div class="card-header fw-bold text-start"><i class="bi-person-check"></i> Sign In</div>
+                  	<div class="card-header fw-bold text-start"><i class="bi-person-check"></i> Sign Up</div>
                   	<div class="card-body">
                   		<form th:action="@{/signup}" method="post" id="signupForm">
 	                       <div class="mb-3 text-start">
@@ -46,6 +46,9 @@
 								</div>
 	                        </div>
 	                    </form>
+	                    <div class="text-end">
+	                    	<a th:href="@{signin}" class="text-decoration-none text-end">Already exist account?</a>
+	                    </div>
                  	</div>
 
                   	<div class="card-footer text-end">

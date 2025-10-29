@@ -13,18 +13,18 @@
 	<div layout:fragment="content">
 		<div class="row justify-content-center align-items-center vh-100 m-0">
 			<div class="col-4 text-center">
+				<form th:action="@{/signin}" method="post">
                   <h2 class="fw-bolder fw-bolder my-5">Balance Management</h2>
                   <div class="card">
                   	<div class="card-header fw-bold text-start"><i class="bi-person-check"></i> Sign In</div>
                   	<div class="card-body">
-                  		<form th:action="@{/signin}" method="post">
 	                       <div class="mb-3 text-start">
-	                            <label for="username" class="form-label">Login ID</label>
+	                            <label for="loginId" class="form-label">Login ID</label>
 	                            <div class="input-group">
 	                            	<span class="input-group-text">
 	                            		<i class="bi-lock"></i>
 	                            	</span>
-	                            	<input type="text" class="form-control" id="username" name="username" placeholder="login ID" required>
+	                            	<input type="text" class="form-control" id="loginId" name="loginId" placeholder="login ID" required>
 	                            </div>
 	                        </div>
 	                        <div class="mb-3 text-start">
@@ -36,9 +36,9 @@
 	                            	<input type="password" class="form-control" id="password" name="password" placeholder="password" required>
 	                            </div>
 	                        </div>
-	                    </form>
+	                    
 	                    <div class="text-end">
-	                    	<a th:href="@{signup}" class="text-decoration-none text-end">create new account?</a>
+	                    	<a th:href="@{signup}" class="text-decoration-none text-end">Create new account?</a>
 	                    </div>
                  	</div>
 
@@ -47,6 +47,7 @@
 	                     <button type="submit" class="btn btn-dark"><i class="bi-person-plus"></i> Sign In</button>
                  	</div>
                   </div>
+                  </form>
               </div>
 		</div>
 	</div>

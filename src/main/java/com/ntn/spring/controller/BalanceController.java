@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BalanceController {
 
 	@GetMapping("{id:\\d+}")
-	public String findById(@PathVariable int id) {
+	public String findById(@PathVariable int id, org.springframework.security.core.Authentication auth) {
+		 System.out.println("Logged in user: " + auth.getName());
+		    System.out.println("Authorities: " + auth.getAuthorities());
 		return "balance-detail";
 	}
 
-	@GetMapping("add/{type}")
+	@GetMapping("/{type}")
 	public String addNew(@PathVariable String type, ModelMap model) {
 		model.put("title", "incomes".equals(type) ? "Add New Income" : "Add New Expense");
 		model.put("type", type);
@@ -39,4 +41,12 @@ public class BalanceController {
 	public String save() {
 		return "redirect:/user/balance/%d".formatted(1);
 	}
+	
+	@GetMapping
+	public String listBalances(ModelMap model) {
+	    model.put("title", "Balance Report");
+	    return "balance-list";  // or whatever your list page is called
+	}
+
+
 }

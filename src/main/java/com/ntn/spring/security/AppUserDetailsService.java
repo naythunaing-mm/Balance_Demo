@@ -1,8 +1,5 @@
 package com.ntn.spring.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,33 +9,22 @@ import com.ntn.spring.modal.repo.UserRepo;
 
 @Service
 public class AppUserDetailsService implements UserDetailsService {
-	
-	@Autowired
-	private UserRepo userRepo;
 
-//	@Override
-//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//		return userRepo.findOneByLoginId(username)
-//				.map(user -> User.withUsername(username)
-//						.password(user.getPassword())
-//						.authorities(AuthorityUtils.createAuthorityList(user.getRole().name()))
-//						.disabled(!user.isActive())
-//						.disabled(!user.isActive())
-//						.build())
-//				.orElseThrow(() -> new UsernameNotFoundException("There is no Username with Login ID %s".formatted(username)));
-//	}
+    private final UserRepo userRepo;
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return userRepo.findOneByLoginId(username)
-				.map(user -> User.withUsername(username)
-						.password(user.getPassword())
-						.authorities(AuthorityUtils.createAuthorityList(user.getRole().name()))
-						.disabled(!user.isActive())
-						.disabled(!user.isActive())
-						.build()
-						).orElseThrow(() -> new UsernameNotFoundException("There is no User name with Login ID %s".formatted(username)));
-	}
+    public AppUserDetailsService(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 
+    @Override
+    public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
+        var user = userRepo.findOneByLoginId(loginId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        return org.springframework.security.core.userdetails.User
+                .withUsername(user.getLoginId())     
+                .password(user.getPassword())        
+                .roles(user.getRole().name())         // ✅ FIXED: use roles()
+                .build();
+    }
 }

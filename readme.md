@@ -4,3 +4,5 @@
 24/10/2025  1.Add Entities
 
 28/10/2025  1.Add Authorities
+
+29/10/2025  1.Add Login Logic

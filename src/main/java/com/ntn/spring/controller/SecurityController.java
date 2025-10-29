@@ -4,12 +4,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.ntn.spring.modal.domain.entity.User.Role;
 
 @Controller
 public class SecurityController {
-
 	@GetMapping("/")
 	public String index() {
 		var auth = SecurityContextHolder.getContext().getAuthentication();
@@ -19,6 +17,13 @@ public class SecurityController {
 		}
 		return "signin";
 	}
+	
+    @GetMapping("/signin")
+    public String signin() {
+        return "signin";
+    }
+
+	
 	@GetMapping("/signup")
 	public void loadSignUp() {
 
@@ -33,4 +38,5 @@ public class SecurityController {
 	public String changePassword() {
 		return "redirect:/";
 	}
+
 }
