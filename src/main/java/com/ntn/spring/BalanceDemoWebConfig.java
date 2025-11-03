@@ -2,6 +2,7 @@ package com.ntn.spring;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -16,4 +17,11 @@ public class BalanceDemoWebConfig implements WebMvcConfigurer {
 		registry.addViewController("/signin").setViewName("signin");
 		registry.addViewController("/signout").setViewName("signin");
 	}
+
+	@Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+            .addResourceHandler("/resources/**")
+            .addResourceLocations("classpath:/static/");
+    }
 }

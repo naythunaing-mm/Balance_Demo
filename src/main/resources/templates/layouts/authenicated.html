@@ -50,7 +50,7 @@
 						class="bi-key"></i> Change password
 					</a>
 
-					<a th:href="@{/signout}" class="list-group-item"><i
+					<a th:href="@{/signout}" class="list-group-item" id="signOutLink"><i
 						class="bi-door-open"></i> Logout</a>
 				</ul>
 
@@ -64,6 +64,8 @@
 	</div>
 	<!-- Include the change password modal fragment -->
 	<div th:replace="~{fragments/modals :: changePassword}"></div>
+	
+	<div th:replace="/fragments/forms :: signout"></div>
 
 </body>
 </html>

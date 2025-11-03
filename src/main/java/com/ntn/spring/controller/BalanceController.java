@@ -18,11 +18,17 @@ public class BalanceController {
 		return "balance-detail";
 	}
 
-	@GetMapping("/{type}")
+	@GetMapping("add/{type}")
 	public String addNew(@PathVariable String type, ModelMap model) {
 		model.put("title", "incomes".equals(type) ? "Add New Income" : "Add New Expense");
 		model.put("type", type);
 		return "balance-edit";
+	}
+	
+	@GetMapping("/{type}")
+	public String incomes(ModelMap model, @PathVariable String type) {
+		model.put("title", "incomes".equals(type)? "Income Managements" : "Expense Managements");
+		return "balance-list";
 	}
 	
 	@GetMapping("edit/{id:\\d+}")
@@ -45,7 +51,7 @@ public class BalanceController {
 	@GetMapping
 	public String listBalances(ModelMap model) {
 	    model.put("title", "Balance Report");
-	    return "balance-list";  // or whatever your list page is called
+	    return "balance-report";
 	}
 
 

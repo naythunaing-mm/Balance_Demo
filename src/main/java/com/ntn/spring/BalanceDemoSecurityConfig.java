@@ -22,9 +22,9 @@ public class BalanceDemoSecurityConfig {
         http
             .formLogin(form -> form
                 .loginPage("/signin")
-                .loginProcessingUrl("/signin")    // must match <form action="/signin">
-                .usernameParameter("loginId")     // must match input name
-                .passwordParameter("password")    // must match input name
+                .loginProcessingUrl("/signin")
+                .usernameParameter("loginId")
+                .passwordParameter("password")
                 .defaultSuccessUrl("/index", true)
                 .failureUrl("/signin?error")
                 .permitAll()
@@ -36,8 +36,8 @@ public class BalanceDemoSecurityConfig {
             )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/signin", "/signup", "/css/**", "/js/**", "/images/**").permitAll()
-                .requestMatchers("/user/**").hasAnyRole("MEMBER", "ADMIN")   // ✅ FIXED
-                .requestMatchers("/admin/**").hasRole("ADMIN")               // ✅ FIXED
+                .requestMatchers("/user/**").hasAnyRole("MEMBER", "ADMIN")
+                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
             .csrf(csrf -> csrf.disable());

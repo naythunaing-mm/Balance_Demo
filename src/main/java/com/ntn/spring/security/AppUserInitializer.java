@@ -36,9 +36,9 @@ public class AppUserInitializer {
             admin.setPhone("09772803152");
             userRepo.save(admin);
 
-            System.out.println("✅ Default admin user created (loginId='admin', password='admin')");
+            System.out.println("Default admin user created (loginId='admin', password='admin')");
         } else {
-            System.out.println("ℹ️ Admin user already exists — skipping creation.");
+            System.out.println("Admin user already exists — skipping creation.");
         }
     }
 }
