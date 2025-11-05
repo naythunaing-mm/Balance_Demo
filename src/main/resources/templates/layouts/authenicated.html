@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Balance</title>
@@ -18,28 +19,28 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="py-4">Balance Management System</h1>
+		<h1 class="py-4">
+			<i class="bi-bar-chart"></i> Balance Management System
+		</h1>
 		<div class="row">
 			<div class="col-3">
 				<ul class="list-group">
-					<a th:href="@{/index}" class="list-group-item"><i class="bi-house"></i>
-						Home</a>
+					<a th:href="@{/index}" class="list-group-item"><i
+						class="bi-house"></i> Home</a>
 
-					<a th:href="@{/user/balance}" class="list-group-item"
-						sec:authorize="hasAnyAuthority('ADMIN','MEMBER')"> <i
+					<a th:href="@{/user/balance}" class="list-group-item"> <i
 						class="bi-bar-chart"></i> Balance Report
 					</a>
 
-					<a th:href="@{/user/balance/incomes}" class="list-group-item"
-						sec:authorize="hasAnyAuthority('ADMIN','MEMBER')"> <i
-						class="bi-arrow-up-circle"></i> Income
+					<a th:href="@{/user/balance/incomes}" class="list-group-item">
+						<i class="bi-arrow-up-circle"></i> Income
 					</a>
 
-					<a th:href="@{/user/balance/expenses}" class="list-group-item"
-						sec:authorize="hasAnyAuthority('ADMIN','MEMBER')"> <i
-						class="bi-arrow-down-circle"></i> Expense
+					<a th:href="@{/user/balance/expenses}" class="list-group-item">
+						<i class="bi-arrow-down-circle"></i> Expense
 					</a>
-
+					<a th:href="@{/user/profile}" class="list-group-item"><i
+						class="bi bi-person-circle"></i> Profile </a>
 					<a th:href="@{/admin/users}" class="list-group-item"
 						sec:authorize="hasAuthority('ADMIN')"> <i class="bi-people"></i>
 						User Management
@@ -64,7 +65,7 @@
 	</div>
 	<!-- Include the change password modal fragment -->
 	<div th:replace="~{fragments/modals :: changePassword}"></div>
-	
+
 	<div th:replace="/fragments/forms :: signout"></div>
 
 </body>

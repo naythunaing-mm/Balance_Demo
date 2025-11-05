@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{layouts/authenicated.html}">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">View</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row mb-4">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						<i class="bi-person-circle"></i> Profile
+					</div>
+					<div class="card-body">
+						<div class="input-group mb-2">
+							<div class="input-group-text">
+								<i class="bi bi-person-circle"></i>
+							</div>
+							<span class="form-control">Name</span>
+						</div>
+
+						<div class="input-group">
+							<div class="input-group-text">
+								<i class="bi-key"></i>
+							</div>
+							<span class="form-control">Login ID</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col">
+				<div class="card">
+					<div class="card-header d-flex justify-content-between">
+						<span> <i class="bi bi-cursor"></i> Contact
+						</span> <a href="" class="bi bi-pencil"></a>
+					</div>
+					<div class="card-body">
+						<div class="input-group mb-2">
+							<div class="input-group-text">
+								<i class="bi bi-telephone"></i>
+							</div>
+							<span class="form-control">Phone</span>
+						</div>
+
+						<div class="input-group">
+							<div class="input-group-text">
+								<i class="bi bi-envelope"></i>
+							</div>
+							<span class="form-control">Email</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-header">
+				<i class="bi bi-command"> Access Logs</i>
+			</div>
+			<div class="card-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Access Type</th>
+							<th>Times</th>
+							<th>Remark</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>AAA</td>
+							<td>AAA</td>
+							<td>AAA</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
